@@ -1,0 +1,10 @@
+class_name: ApiTester
+modules:
+   enabled:
+       - REST:
+           depends: PhpBrowser
+           url: 'http://yii2-rest-api-tdlist:88/api/web'
+           part: [json]
+       - Yii2:
+           part: [orm, fixtures]
+           entryScript: index-test.php
