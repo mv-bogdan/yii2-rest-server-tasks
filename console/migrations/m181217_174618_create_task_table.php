@@ -24,6 +24,7 @@ class m181217_174618_create_task_table extends Migration
             'updated_at' => $this->integer()->notNull(),
             'title' => $this->string(),
             'content' => $this->text(),
+            'date_complete' => $this->string(),
             'date_of_completion' => $this->integer(),
         ], $tableOptions);
 
