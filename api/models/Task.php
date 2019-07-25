@@ -37,7 +37,7 @@ class Task extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
             [['content'], 'string'],
-            [['title', 'date_of_completion'], 'string', 'max' => 255],
+            [['title', 'date_of_completion', 'date_complete'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -53,6 +53,7 @@ class Task extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'date_of_completion' => 'Date of completion',
+            'date_complete' => 'date_complete',
             'title' => 'Title',
             'content' => 'Content',
         ];
@@ -85,13 +86,7 @@ class Task extends \yii\db\ActiveRecord
             ->limit($limit)
             ->offset($offset);
 
-
-        // 15.12.2018 Реализовать просмотр только своих тасков -->
-//        if(isset($params['user_id'])) {
-//            $query->andFilterWhere(['user_id' => $params['user_id']]);
-//        }
         $query->andFilterWhere(['user_id' => Yii::$app->user->id]);
-        // <--
 
         if(isset($params['id'])) {
             $query->andFilterWhere(['id' => $params['id']]);

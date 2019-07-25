@@ -77,7 +77,7 @@ class SiteController extends RestController
      */
     public function actionIndex()
     {
-        return Yii::$app->api->sendSuccessResponse(['Yii2 REST API']);
+        return Yii::$app->api->sendSuccessResponse(['Tasks App REST API']);
     }
 
     /**
